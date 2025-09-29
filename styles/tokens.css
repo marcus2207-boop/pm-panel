@@ -1,0 +1,124 @@
+/* 
+  Design System Tokens - Britenet Brand Palette
+  WCAG 2.1 AA Compliant Color System
+*/
+
+:root {
+  /* Primary Brand Colors */
+  --primary-blue: #374EA2;     /* Headers, CTAs, links */
+  --secondary-slate: #333843;   /* Text primary, borders */
+  --soft-white: #F1F2F2;      /* Backgrounds, cards */
+  
+  /* Accent Colors */
+  --accent-turquoise: #21AECC; /* Team tags, secondary elements */
+  --accent-orange: #F15A22;    /* Highlights, urgent CTAs */
+  
+  /* Status System Colors */
+  --success: #5D9E52;          /* On track projects, completed */
+  --warning: #FFCC4E;          /* At risk projects, pending */
+  --error: #D2232A;            /* Critical issues, blocked */
+  --info: #426AB3;             /* System info, notifications */
+  
+  /* Neutrals */
+  --text-primary: #333843;
+  --text-secondary: #666666;
+  --text-muted: #999999;
+  --border-light: #E9ECEF;
+  --background-hover: #F8F9FA;
+  --background-body: #FFFFFF;
+  
+  /* Spacing Scale */
+  --spacing-xs: 4px;   /* Icon margins, fine details */  
+  --spacing-sm: 8px;   /* Element padding, small gaps */
+  --spacing-md: 16px;  /* Standard element spacing */
+  --spacing-lg: 24px;  /* Section spacing, major gaps */
+  --spacing-xl: 32px;  /* Page-level spacing */
+  --spacing-xxl: 48px; /* Major layout divisions */
+  
+  /* Typography Scale */
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  
+  /* Font Sizes */
+  --font-h1: 28px;     /* Page titles */
+  --font-h2: 20px;     /* Section headers */
+  --font-body: 14px;   /* Content text */
+  --font-small: 12px;  /* Meta information */
+  --font-label: 11px;  /* Field labels */
+  
+  /* Font Weights */
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  
+  /* Border Radius */
+  --radius-sm: 4px;    /* Buttons, inputs */
+  --radius-md: 8px;    /* Cards */
+  --radius-lg: 16px;   /* Badges */
+  
+  /* Shadows */
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-focus: 0 0 0 2px var(--primary-blue);
+  
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 300ms ease;
+  --transition-slow: 500ms ease;
+  
+  /* Z-Index Scale */
+  --z-dropdown: 1000;
+  --z-modal: 1100;
+  --z-tooltip: 1200;
+  
+  /* Grid System */
+  --grid-columns: 12;
+  --grid-gutter: 24px;
+  --container-max-width: 1200px;
+  
+  /* Breakpoints */
+  --breakpoint-mobile: 480px;
+  --breakpoint-tablet: 768px;
+  --breakpoint-desktop: 1024px;
+  --breakpoint-large: 1200px;
+}
+
+/* Theme Variations */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-body: #1a1d23;
+    --soft-white: #2a2d33;
+    --text-primary: #e1e4e8;
+    --text-secondary: #959da5;
+    --border-light: #30363d;
+    --background-hover: #21262d;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  :root {
+    --primary-blue: #0066cc;
+    --text-primary: #000000;
+    --border-light: #666666;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-fast: 0ms;
+    --transition-normal: 0ms;
+    --transition-slow: 0ms;
+  }
+}
+
+/* Print Styles */
+@media print {
+  :root {
+    --background-body: white;
+    --text-primary: black;
+    --primary-blue: black;
+    --shadow-card: none;
+    --shadow-hover: none;
+  }
+}

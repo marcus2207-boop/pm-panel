@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Project Managera - Britenet Dashboard</title>
+    <link rel="stylesheet" href="styles/tokens.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/layouts.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIGZpbGw9IiMzNzRFQTIiIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMyA2aDEydjJIM3ptMCA0aDl2Mkgzem0wIDRoNnYySDN6Ii8+PC9zdmc+">
+</head>
+<body>
+    <div id="app" class="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="header-left">
+                    <div class="logo">
+                        <span class="logo-icon">🔷</span>
+                        <span class="logo-text">Panel PM</span>
+                    </div>
+                    <h1 class="page-title">Britenet Dashboard</h1>
+                </div>
+                <div class="header-right">
+                    <button class="notification-btn" aria-label="Notifications">
+                        <span class="icon">🔔</span>
+                        <span class="badge">3</span>
+                    </button>
+                    <div class="user-menu">
+                        <button class="user-btn" aria-label="User menu">
+                            <span>User</span>
+                            <span class="icon">▼</span>
+                        </button>
+                    </div>
+                    <button class="settings-btn" aria-label="Settings">
+                        <span class="icon">⚙️</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="navigation" id="navigation">
+            <div class="nav-content">
+                <button class="nav-item active" data-screen="dashboard" aria-current="page">
+                    <span class="icon">📊</span>
+                    <span>Dashboard</span>
+                </button>
+                <button class="nav-item" data-screen="reports">
+                    <span class="icon">📈</span>
+                    <span>Reports</span>
+                </button>
+                <button class="nav-item" data-screen="alerts">
+                    <span class="icon">⚠️</span>
+                    <span>Alerts</span>
+                </button>
+                <button class="nav-item" data-screen="team">
+                    <span class="icon">👥</span>
+                    <span>Team</span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content" id="mainContent">
+            <!-- Dashboard Screen -->
+            <section class="screen active" id="dashboard-screen">
+                <div class="screen-header">
+                    <div class="screen-actions">
+                        <button class="btn btn-primary">
+                            <span class="icon">📋</span>
+                            Nowy Raport
+                        </button>
+                        <button class="btn btn-secondary">
+                            <span class="icon">📤</span>
+                            Export
+                        </button>
+                        <div class="filter-controls">
+                            <input type="search" class="search-input" placeholder="🔍 Filter projects..." id="searchInput">
+                            <button class="btn btn-secondary">
+                                Advanced
+                                <span class="icon">▼</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-table-container">
+                    <div class="table-wrapper">
+                        <table class="data-table" id="projectsTable" role="table">
+                            <thead>
+                                <tr role="row">
+                                    <th role="columnheader" class="sortable" data-sort="status">
+                                        <button class="sort-btn">
+                                            Status
+                                            <span class="sort-icon">↕️</span>
+                                        </button>
+                                    </th>
+                                    <th role="columnheader" class="sortable" data-sort="project">
+                                        <button class="sort-btn">
+                                            Projekt
+                                            <span class="sort-icon">↕️</span>
+                                        </button>
+                                    </th>
+                                    <th role="columnheader" class="sortable" data-sort="client">
+                                        <button class="sort-btn">
+                                            Klient
+                                            <span class="sort-icon">↕️</span>
+                                        </button>
+                                    </th>
+                                    <th role="columnheader" class="sortable" data-sort="team">
+                                        <button class="sort-btn">
+                                            Zespół
+                                            <span class="sort-icon">↕️</span>
+                                        </button>
+                                    </th>
+                                    <th role="columnheader" class="sortable" data-sort="progress">
+                                        <button class="sort-btn">
+                                            Postęp
+                                            <span class="sort-icon">↕️</span>
+                                        </button>
+                                    </th>
+                                    <th role="columnheader" class="sortable" data-sort="deadline">
+                                        <button class="sort-btn">
+                                            Deadline
+                                            <span class="sort-icon">↕️</span>
+                                        </button>
+                                    </th>
+                                    <th role="columnheader">Akcje</th>
+                                </tr>
+                            </thead>
+                            <tbody id="projectsTableBody">
+                                <!-- Project rows will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="loading-state" id="loadingState">
+                        <div class="skeleton-table">
+                            <div class="skeleton-row" aria-hidden="true"></div>
+                            <div class="skeleton-row" aria-hidden="true"></div>
+                            <div class="skeleton-row" aria-hidden="true"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Project Details Screen -->
+            <section class="screen" id="project-details-screen">
+                <div class="breadcrumb">
+                    <button class="breadcrumb-item" data-screen="dashboard">📊 Dashboard</button>
+                    <span class="breadcrumb-separator">›</span>
+                    <span class="breadcrumb-item current" id="currentProjectName">PROJECT-ALPHA</span>
+                </div>
+
+                <div class="project-header">
+                    <div class="project-info">
+                        <h2 class="project-title" id="projectTitle">PROJECT-ALPHA</h2>
+                        <div class="project-meta">
+                            <span class="meta-item">ClientA</span>
+                            <span class="meta-item">JS Team</span>
+                            <span class="status-badge success">🟢 W Realizacji</span>
+                        </div>
+                        <div class="project-stats">
+                            <span class="stat">15 Tasks</span>
+                            <span class="stat">8 Active</span>
+                            <span class="stat warning">2 Blocked</span>
+                            <span class="stat success">5 Done</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-tabs">
+                    <div class="tabs-nav">
+                        <button class="tab-btn active" data-tab="tasks">
+                            <span class="icon">📋</span>
+                            Tasks
+                        </button>
+                        <button class="tab-btn" data-tab="code">
+                            <span class="icon">💻</span>
+                            Code
+                        </button>
+                        <button class="tab-btn" data-tab="incidents">
+                            <span class="icon">🚨</span>
+                            Incidents
+                        </button>
+                        <button class="tab-btn" data-tab="analytics">
+                            <span class="icon">📊</span>
+                            Analytics
+                        </button>
+                        <button class="tab-btn" data-tab="reports">
+                            <span class="icon">📝</span>
+                            Reports
+                        </button>
+                    </div>
+
+                    <div class="tab-content">
+                        <div class="tab-panel active" id="tasks-panel">
+                            <div class="task-list" id="taskList">
+                                <!-- Tasks will be populated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <div class="tab-panel" id="code-panel">
+                            <div class="code-integration">
+                                <p>Code integration view - GitLab commits and branches</p>
+                            </div>
+                        </div>
+
+                        <div class="tab-panel" id="incidents-panel">
+                            <div class="incident-impact">
+                                <p>Incident impact view - Freshservice integration</p>
+                            </div>
+                        </div>
+
+                        <div class="tab-panel" id="analytics-panel">
+                            <div class="project-analytics">
+                                <p>Project analytics and metrics</p>
+                            </div>
+                        </div>
+
+                        <div class="tab-panel" id="reports-panel">
+                            <div class="project-reports">
+                                <p>Project-specific reports</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Reports Center Screen -->
+            <section class="screen" id="reports-screen">
+                <div class="breadcrumb">
+                    <button class="breadcrumb-item" data-screen="dashboard">📊 Dashboard</button>
+                    <span class="breadcrumb-separator">›</span>
+                    <span class="breadcrumb-item current">📈 Reports</span>
+                </div>
+
+                <div class="reports-tabs">
+                    <button class="tab-btn active" data-report-tab="quick">📊 Quick Report</button>
+                    <button class="tab-btn" data-report-tab="custom">📋 Custom</button>
+                    <button class="tab-btn" data-report-tab="history">📚 History</button>
+                    <button class="tab-btn" data-report-tab="templates">⚙️ Templates</button>
+                </div>
+
+                <div class="report-builder">
+                    <h2>Weekly Status Report Generator</h2>
+                    
+                    <div class="report-steps">
+                        <div class="step active" data-step="1">
+                            <h3>Project Selection</h3>
+                            <div class="project-selection">
+                                <div class="project-checkbox">
+                                    <input type="checkbox" id="project1" checked>
+                                    <label for="project1">☑️ PROJECT-001 (ClientA)</label>
+                                </div>
+                                <div class="project-checkbox">
+                                    <input type="checkbox" id="project2" checked>
+                                    <label for="project2">☑️ PROJECT-002 (ClientB)</label>
+                                </div>
+                                <div class="project-checkbox">
+                                    <input type="checkbox" id="project3">
+                                    <label for="project3">☐ PROJECT-003 (ClientC)</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step" data-step="2">
+                            <h3>Report Template</h3>
+                            <select class="template-select">
+                                <option value="executive">Executive Summary</option>
+                                <option value="weekly">Weekly Status</option>
+                                <option value="custom">Custom</option>
+                            </select>
+                        </div>
+
+                        <div class="step" data-step="3">
+                            <h3>Output Options</h3>
+                            <div class="output-options">
+                                <div class="format-options">
+                                    <label>Format:</label>
+                                    <button class="format-btn active">📄 PDF</button>
+                                    <button class="format-btn">📊 Excel</button>
+                                    <button class="format-btn">📧 Email</button>
+                                </div>
+                                <div class="schedule-options">
+                                    <label>Schedule:</label>
+                                    <button class="schedule-btn active">📅 Weekly</button>
+                                    <button class="schedule-btn">📅 Custom</button>
+                                    <button class="schedule-btn">🔄 Once</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step-actions">
+                            <button class="btn btn-secondary">👁️ Preview Report</button>
+                            <button class="btn btn-primary">📤 Generate & Send</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="scripts/api.js"></script>
+    <script src="scripts/formatters.js"></script>
+    <script src="scripts/app.js"></script>
+</body>
+</html>
