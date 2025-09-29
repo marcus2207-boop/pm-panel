@@ -187,7 +187,7 @@ class PMPanelApp {
       </td>
       <td role="gridcell">
         <button class="project-name-link" data-project-id="${project.id}" data-screen="project-details">
-          ${project.name}
+          ${Formatters.sanitizeHTML(project.name)}
         </button>
       </td>
       <td role="gridcell">${project.client}</td>
