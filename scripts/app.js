@@ -314,7 +314,7 @@ class PMPanelApp {
         Assignee: ${Formatters.sanitizeHTML(task.assignee)} | Sprint: ${Formatters.sanitizeHTML(task.sprint)}
       </div>
       <div class="task-actions">
-        <a href="${task.jiraLink}" class="btn btn-sm btn-secondary" target="_blank">View Jira</a>
+        <a href="${task.jiraLink}" class="btn btn-sm btn-secondary" target="_blank" rel="noopener noreferrer">View Jira</a>
         <span class="commit-count">Commits: ${task.commits}</span>
         ${hasBlockers ? `<span class="blocker-warning">⚠️ Blocker: ${task.blockers[0]}</span>` : '<span class="no-blockers">Blockers: None</span>'}
       </div>
