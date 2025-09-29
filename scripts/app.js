@@ -311,7 +311,7 @@ class PMPanelApp {
         <span class="status-badge ${status.class}">${status.icon} ${status.text}</span>
       </div>
       <div class="task-meta">
-        Assignee: ${task.assignee} | Sprint: ${task.sprint}
+        Assignee: ${Formatters.sanitizeHTML(task.assignee)} | Sprint: ${Formatters.sanitizeHTML(task.sprint)}
       </div>
       <div class="task-actions">
         <a href="${task.jiraLink}" class="btn btn-sm btn-secondary" target="_blank">View Jira</a>
