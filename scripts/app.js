@@ -307,7 +307,7 @@ class PMPanelApp {
 
     taskEl.innerHTML = `
       <div class="task-header">
-        <h4 class="task-title">${task.title}</h4>
+        <h4 class="task-title">${Formatters.sanitizeHTML(task.title)}</h4>
         <span class="status-badge ${status.class}">${status.icon} ${status.text}</span>
       </div>
       <div class="task-meta">
